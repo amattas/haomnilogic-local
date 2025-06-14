@@ -94,6 +94,7 @@ class OmniLogicCoordinator(DataUpdateCoordinator):
                     # We postprocess the XML to convert hyphens to underscores to simplify typing with TypedDict later
                     # and attempt to convert values to int to make equality comparisons easier without having to constantly int() everything
                     self.telemetry_xml = await self.omni_api.async_get_telemetry(raw=True)
+                    _LOGGER.debug(self.telemetry_xml)
                     self.telemetry = Telemetry.load_xml(self.telemetry_xml)
 
                 entity_index: dict[int, EntityIndexData] = {}
